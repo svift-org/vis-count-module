@@ -14,7 +14,7 @@ SVIFT.vis.count = (function (data, container) {
       .text(data.data.data[0])
       .attr("fill", data.style.color.main)
       .attr("text-anchor", "middle")
-      .attr("font-size", 100) //use any font-size
+      .attr("font-size", 1) //use any font-size
       .attr("opacity",0)
       .attr("font-family", data.style.font)
 
@@ -24,21 +24,21 @@ SVIFT.vis.count = (function (data, container) {
 
     var windowWidth = module.container.node().offsetWidth - module.config.margin.left - module.config.margin.right;
     var windowHeight = module.container.node().offsetHeight - module.config.margin.top - module.config.margin.bottom;
-    var fatNrSpace = windowHeight  - module.config.topTextHeight -module.config.bottomTextHeight;
-    var minSpace = Math.min(fatNrSpace,windowWidth)
+    var countSpaceHeight = windowHeight  - module.config.topTextHeight -module.config.bottomTextHeight;
+    var minSpace = Math.min(countSpaceHeight,windowWidth)
 
     module.d3config.count
       .attr("x", windowWidth / 2)
       .attr("font-size", function(d){
             var bBox = this.getBBox();
-            var maxSpace = Math.min(bBox.width,bBox.height) * 1.1;
+            var maxSpace = Math.max(bBox.width,bBox.height);
             var currentFontSize = d3.select(this).attr("font-size");
             module.d3config.fatNumberNewSize = currentFontSize * (minSpace/maxSpace) 
             return module.d3config.fatNumberNewSize ;
         })
       .attr("opacity",1)
       .attr("y", function(){
-        return (module.d3config.fatNumberNewSize+ module.config.topTextHeight)
+        return windowHeight - module.config.bottomTextHeight - (this.getBBox().height / 4)
       })
  
   };
