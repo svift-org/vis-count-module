@@ -36,7 +36,6 @@ SVIFT.vis.count = (function (data, container) {
             module.d3config.fatNumberNewSize = currentFontSize * (minSpace/maxSpace) 
             return module.d3config.fatNumberNewSize ;
         })
-      .attr("opacity",1)
       .attr("y", function(){
         return windowHeight - module.config.bottomTextHeight - (this.getBBox().height / 4)
       })
@@ -48,6 +47,7 @@ SVIFT.vis.count = (function (data, container) {
     var interpolation = Math.round(module.d3config.interpolate(module.d3config.ease(t)));
     module.d3config.count
       .text(interpolation)
+      .attr("opacity",1)
 
   };
 
