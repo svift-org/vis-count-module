@@ -37,7 +37,9 @@ SVIFT.vis.count = (function (data, container) {
             return module.d3config.fatNumberNewSize ;
         })
       .attr("y", function(){
-        return windowHeight - module.config.bottomTextHeight - (this.getBBox().height / 4)
+        //bottom of number
+         //140,35,35
+        return (windowHeight/2) + (this.getBBox().height * 0.34)
       })
  
   };
