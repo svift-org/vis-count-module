@@ -1,18 +1,17 @@
 SVIFT.vis.count = (function (data, container) {
    // Module object
   var module = SVIFT.vis.base(data, container);
-  var firstDataKey = Object.keys(data.data.data)[0];
- 
+
   module.d3config = {
     ease:d3.easeCubicInOut, 
-    interpolate: d3.interpolate(0,data.data.data[firstDataKey][0][1]),
+    interpolate: d3.interpolate(0,data.data.data[0].data[0]),
   };
 
 
   module.setup = function () {
 
     module.d3config.count = module.g.append("text")
-      .text(data.data.data[firstDataKey][0][1])
+      .text(data.data.data[0].data[0])
       .attr("fill", data.style.color.main)
       .attr("text-anchor", "middle")
       .attr("font-size", 1) //use any font-size
