@@ -33,12 +33,10 @@ SVIFT.vis.count = (function (data, container) {
             var bBox = this.getBBox();
             var maxSpace = Math.max(bBox.width,bBox.height);
             var currentFontSize = d3.select(this).attr("font-size");
-            module.d3config.fatNumberNewSize = currentFontSize * (minSpace/maxSpace) 
+            module.d3config.fatNumberNewSize = currentFontSize * (minSpace/maxSpace) * 0.8;
             return module.d3config.fatNumberNewSize ;
         })
       .attr("y", function(){
-        //bottom of number
-         //140,35,35
         return (windowHeight/2) + (this.getBBox().height * 0.34)
       })
  
