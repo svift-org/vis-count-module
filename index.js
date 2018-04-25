@@ -38,9 +38,8 @@ SVIFT.vis.count = (function (data, container) {
             return module.d3config.fatNumberNewSize ;
         })
       .attr("y", function(){
-        return (module.vizSize.height/2)
+        return (module.vizSize.height/2) + (this.getBBox().height * 0.34)
       })
-      .attr("dominant-baseline","middle")
  
   };
 
