@@ -10,7 +10,7 @@ SVIFT.vis.count = (function (data, container) {
 
   module.setup = function () {
 
-    module.d3config.count = module.g.append("text")
+    module.d3config.count = module.vizContainer.append("text")
       .text(data.data.data[0].data[0])
       .attr("fill", data.style.color.main)
       .attr("text-anchor", "middle")
@@ -22,13 +22,14 @@ SVIFT.vis.count = (function (data, container) {
 
   module.resize = function () {
 
-    var windowWidth = module.container.node().offsetWidth - module.config.margin.left - module.config.margin.right;
-    var windowHeight = module.container.node().offsetHeight - module.config.margin.top - module.config.margin.bottom;
-    var countSpaceHeight = windowHeight  - module.config.topTextHeight -module.config.bottomTextHeight;
-    var minSpace = Math.min(countSpaceHeight,windowWidth)
+    // var windowWidth = module.container.node().offsetWidth - module.config.margin.left - module.config.margin.right;
+    // var windowHeight = module.container.node().offsetHeight - module.config.margin.top - module.config.margin.bottom;
+    // var countSpaceHeight = windowHeight  - module.config.topTextHeight -module.config.bottomTextHeight;
+    var minSpace = Math.min(module.vizSize.height,module.vizSize.width);
+    console.log(module.config)
 
     module.d3config.count
-      .attr("x", windowWidth / 2)
+      .attr("x", module.vizSize.width / 2)
       .attr("font-size", function(d){
             var bBox = this.getBBox();
             var maxSpace = Math.max(bBox.width,bBox.height);
@@ -37,8 +38,9 @@ SVIFT.vis.count = (function (data, container) {
             return module.d3config.fatNumberNewSize ;
         })
       .attr("y", function(){
-        return (windowHeight/2) + (this.getBBox().height * 0.34)
+        return (module.vizSize.height/2)
       })
+      .attr("dominant-baseline","middle")
  
   };
 
