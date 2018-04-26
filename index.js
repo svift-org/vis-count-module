@@ -14,7 +14,8 @@ SVIFT.vis.count = (function (data, container) {
       .text(data.data.data[0].data[0])
       .attr("fill", data.style.color.main)
       .attr("text-anchor", "middle")
-      .attr("font-size", 1) //use any font-size
+      // .attr("font-size", 1) //use any font-size
+      .class("labelText")
       .attr("opacity",0)
       .attr("font-family", data.style.font)
 
