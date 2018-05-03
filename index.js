@@ -14,7 +14,7 @@ SVIFT.vis.count = (function (data, container) {
       .text(data.data.data[0].data[0])
       .attr("fill", data.style.color.main)
       .attr("text-anchor", "middle")
-      .attr("font-size", 1) //use any font-size
+      .attr("font-size", 13) //use any font-size
       .attr("class","labelTextFont visFill")
       .attr("opacity",0)
       .attr("font-family", data.style.font)
@@ -35,14 +35,23 @@ SVIFT.vis.count = (function (data, container) {
             var bBox = this.getBBox();
             var maxSpace = Math.max(bBox.width,bBox.height);
             var currentFontSize = d3.select(this).attr("font-size");
-            module.d3config.fatNumberNewSize = currentFontSize * (minSpace/maxSpace) * 0.8;
+            console.log(currentFontSize)
+            module.d3config.fatNumberNewSize = currentFontSize * (minSpace/maxSpace) * 0.9;
             return module.d3config.fatNumberNewSize ;
         })
       .attr("y", function(){
         return (module.vizSize.height/2) + (this.getBBox().height * 0.34)
       })
  
+
+     if(module.playHead == module.playTime){
+        module.goTo(1);
+        module.pause();
+    }
+
   };
+
+
 
   module.animateNumber = function(t){
 
