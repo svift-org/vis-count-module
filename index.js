@@ -27,7 +27,7 @@ SVIFT.vis.count = (function (data, container) {
 
     var minSpace = Math.min(module.vizSize.height,module.vizSize.width);
 
-    let ctext = module.d3config.count.text();
+    var ctext = module.d3config.count.text();
 
     module.d3config.count.text(data.data.data[0].data[0]);
 
