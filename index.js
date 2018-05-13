@@ -37,7 +37,7 @@ SVIFT.vis.count = (function (data, container) {
             var bBox = this.getBBox();
             var maxSpace = Math.max(bBox.width,bBox.height);
             var currentScale = module.d3config;
-            module.d3config.scale = (minSpace/maxSpace) * 0.9;
+            module.d3config.scale = (minSpace/maxSpace) * 0.95;
             return 'translate(' + (module.vizSize.width / 2) + ', ' + ((module.vizSize.height/2) + (this.getBBox().height*module.d3config.scale * 0.34)) + ') scale('+module.d3config.scale+')';
         });
 
