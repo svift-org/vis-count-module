@@ -13,12 +13,10 @@ SVIFT.vis.count = (function (data, container) {
 
     module.d3config.count = module.vizContainer.append("text")
       .text(data.data.data[0].data[0])
-      .attr("fill", data.style.color.main)
+      .attr('class', 'visFill labelTextFont')
       .attr("text-anchor", "middle")
-      .attr("font-size", 13) //use any font-size
-      .attr("class","labelTextFont visFill")
-      .attr("opacity",0)
-      .attr("font-family", data.style.font);
+      .attr("font-size", 13)
+      .attr("opacity",0);
 
   };
 
