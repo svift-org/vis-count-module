@@ -31,7 +31,7 @@ SVIFT.vis.count = (function (data, container) {
     module.d3config.count
       .attr("transform", function(d){
             var bBox = this.getBBox();
-            var ratio = Math.min([module.vizSize.width/bBox.width, module.vizSize.width/(bBox.height*0.8)]);
+            var ratio = Math.min([module.vizSize.width/bBox.width, module.vizSize.height/bBox.height]);
             module.d3config.scale = ratio*0.9;
             return 'translate(' + (module.vizSize.width / 2) + ', ' + ((module.vizSize.height/2) + (this.getBBox().height*module.d3config.scale * 0.28)) + ') scale('+module.d3config.scale+')';
         });
