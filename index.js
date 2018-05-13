@@ -27,6 +27,10 @@ SVIFT.vis.count = (function (data, container) {
 
     var minSpace = Math.min(module.vizSize.height,module.vizSize.width);
 
+    let ctext = module.d3config.count.text();
+
+    module.d3config.count.text(data.data.data[0].data[0]);
+
     module.d3config.count
       .attr("x", module.vizSize.width / 2)
       .attr("transform", function(d){
@@ -39,6 +43,8 @@ SVIFT.vis.count = (function (data, container) {
       .attr("y", function(){
         return (module.vizSize.height/2) + (this.getBBox().height * 0.34)
       });
+
+    module.d3config.count.text(ctext);
 
      if(module.playHead == module.playTime){
         module.goTo(1);
