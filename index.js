@@ -22,8 +22,6 @@ SVIFT.vis.count = (function (data, container) {
 
   module.resize = function () {
 
-    var minSpace = Math.min(module.vizSize.height,module.vizSize.width);
-
     var ctext = module.d3config.count.text();
 
     module.d3config.count
@@ -33,8 +31,8 @@ SVIFT.vis.count = (function (data, container) {
     module.d3config.count
       .attr("transform", function(d){
             var bBox = this.getBBox();
-            var maxSpace = Math.max(bBox.width,bBox.height);
-            module.d3config.scale = (minSpace/(maxSpace*0.9));
+            var ratio = Math.min([module.vizSize.width/bBox.width, module.vizSize.width/bBox.height]);
+            module.d3config.scale = ratio*0.9;
             return 'translate(' + (module.vizSize.width / 2) + ', ' + ((module.vizSize.height/2) + (this.getBBox().height*module.d3config.scale * 0.28)) + ') scale('+module.d3config.scale+')';
         });
 
