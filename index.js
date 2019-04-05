@@ -1,4 +1,9 @@
 SVIFT.vis.count = (function (data, container) {
+
+
+  data.data.data[0].data[0] = Math.round(data.data.data[0].data[0]);
+
+
    // Module object
   var module = SVIFT.vis.base(data, container);
 
