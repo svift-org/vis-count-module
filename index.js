@@ -56,8 +56,20 @@ SVIFT.vis.count = (function (data, container) {
 
   };
 
+  //this ensures that the right number is displayed at the end. Fixes bug when high jumber are animated
+  module.animateNumberEnd = function(t){
+
+    if(t!==0){
+      module.d3config.count
+        .text(data.data.data[0].data[0])
+        .attr("opacity",1);
+    }
+
+  };
+
   module.timeline = {
-    bars: {start:0, end:3000, func:module.animateNumber}
+    bars: {start:0, end:2900, func:module.animateNumber},
+    barsEnd: {start:2900, end:3000, func:module.animateNumberEnd}
   };
 
   return module;
